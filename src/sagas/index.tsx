@@ -1,4 +1,4 @@
-import { signUp, signIn, signOut, getDashboard } from '../helpers/firebase';
+import { signUp, signIn, signOut, getDashboard, getSettings } from '../helpers/firebase';
 import { takeEvery } from 'redux-saga/effects';
 import { AnyAction } from 'redux';
 import actions from '../actions';
@@ -33,8 +33,19 @@ function* fetchDashboard() {
   }
 }
 
+function* fetchSettings() {
+  try {
+    const settings = (yield getSettings()).val();
+    actions.getSettingsSuccess({ settings });
+  } catch(error) {
+    console.error(error);
+    actions.getSettingsFail({ error });
+  }
+}
+
 export default function* watchForActions() {
   yield takeEvery('LOGIN', login);
   yield takeEvery('LOGOUT', logout);
   yield takeEvery('GET_DASHBOARD', fetchDashboard);
+  yield takeEvery('GET_SETTINGS', fetchSettings);
 }

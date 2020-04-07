@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from "react-redux";
 import { Empty, Collapse, Card } from 'antd';
 
-import './style.css';
 import actions from "../../actions";
 import { IState, IDashboard } from "../../reducers";
 

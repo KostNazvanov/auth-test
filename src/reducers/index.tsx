@@ -13,11 +13,22 @@ export interface IDashboard {
   }
 }
 
+export interface ISettingItem {
+    label: string;
+    type: 'select' | 'string' | 'image';
+    value: string;
+    options: { [key: string]: string | number }
+}
+
+export interface ISettings {
+  [key: string]: ISettingItem;
+}
+
 export interface IState {
   user: User | null;
   isLoggedIn: boolean;
   dashboard: IDashboard | false;
-  settings: { [key: string]: string } | false;
+  settings: ISettings | false;
   loading: boolean;
 }
 
