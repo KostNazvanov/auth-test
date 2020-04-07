@@ -1,10 +1,13 @@
 import React from 'react';
 import { Menu as AntdMenu } from 'antd';
 import { Link, withRouter, RouteComponentProps } from 'react-router-dom';
+import { connect } from 'react-redux';
 import routes, { IRoute } from '../../configs/routes';
-import { signOut } from '../../helpers/firebase';
+import { IState } from '../../reducers';
 
-interface IMenuProps extends RouteComponentProps {}
+interface IMenuProps extends RouteComponentProps {
+  isLoggedIn: boolean;
+}
 
 function Menu(props: IMenuProps) {
   return (
@@ -14,7 +17,7 @@ function Menu(props: IMenuProps) {
       mode="inline"
       selectedKeys={[props.location.pathname]}
     >
-      {routes.map((value: IRoute) => (
+      {routes.map((value: IRoute) => value.isLoggedIn === props.isLoggedIn && (
         <AntdMenu.Item
           key={value.path}
           disabled={value.path === props.location.pathname}
@@ -28,4 +31,9 @@ function Menu(props: IMenuProps) {
   );
 }
 
-export default withRouter(Menu);
+const mapStateToProps = (state: IState) => {
+  const { isLoggedIn } = state;
+  return { isLoggedIn };
+};
+
+export default connect(mapStateToProps)(withRouter(Menu));

@@ -1,27 +1,29 @@
-import firebase from 'firebase';
+import _firebase from 'firebase';
 import firebaseConfig from '../configs/firebase.json';
+import actions from "../actions";
 
-const app = firebase.initializeApp(firebaseConfig);
+const firebase = _firebase.initializeApp(firebaseConfig);
 // TODO remove after testing
 // @ts-ignore
-window.firebase = app;
+window.firebase = firebase;
+export default firebase;
 
-app.auth().onAuthStateChanged((user) => {
+firebase.auth().onAuthStateChanged((user) => {
   if (user) {
-    console.log('signed in', user);
+    actions.loginSuccess({ user });
   } else {
-    console.log('signed out');
+    actions.logout({});
   }
 });
 
-export const signUp = async (email: string, password: string) => {
+export const signUp = (email: string, password: string) => {
   return firebase.auth().createUserWithEmailAndPassword(email, password)
 };
 
-export const signIn = async (email: string, password: string) => {
+export const signIn = (email: string, password: string) => {
   return firebase.auth().signInWithEmailAndPassword(email, password)
 };
 
-export const signOut = async () => {
+export const signOut = () => {
   return firebase.auth().signOut();
 };

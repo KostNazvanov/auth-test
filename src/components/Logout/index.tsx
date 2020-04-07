@@ -1,18 +1,15 @@
 import React from 'react';
 import { Button } from 'antd';
-import { Link } from 'react-router-dom';
-import { signOut } from '../../helpers/firebase';
+import actions from "../../actions";
 
 const Logout = () => {
   return (
-    <Link to="./login">
-      <Button
-        type="danger"
-        onClick={signOut}
-      >
-        Logout
-      </Button>
-    </Link>
+    <Button
+      type="danger"
+      onClick={() => actions.logout({})}
+    >
+      Logout
+    </Button>
   )
 };
 

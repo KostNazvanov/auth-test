@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Input, Button } from 'antd';
-import { signIn, signUp } from "../../helpers/firebase";
+import actions from "../../actions";
 
 interface ILoginState {
   email: string,
@@ -22,26 +22,11 @@ class Login extends React.Component<{}, ILoginState> {
     wrapperCol: { offset: 8, span: 16 },
   };
 
-  onFinish = async (email: string, password: string) => {
-    try {
-      this.setState({ email, password });
-      const user = await signIn(email, password);
-      console.log(user);
-    } catch (error) {
-      console.error(error);
-      if (error.code === 'auth/user-not-found') {
-        const { email, password } = this.state;
-        const user = await signUp(email, password);
-        console.log(user);
-      }
-    }
-  };
-
   render = () => {
     return (
       <Form
         {...this.layout}
-        onFinish={(values) => this.onFinish(values.email, values.password)}
+        onFinish={(values) => actions.login(values)}
       >
         <Form.Item
           label="Email"

@@ -7,7 +7,7 @@ export interface IRoute {
   label: string,
   path: string,
   component: (() => JSX.Element) | (typeof Login), // TODO fix static type
-  auth?: boolean,
+  isLoggedIn: boolean,
 }
 
 const routes: IRoute[] = [
@@ -15,23 +15,25 @@ const routes: IRoute[] = [
     label: 'Login',
     path: '/login',
     component: Login,
+    isLoggedIn: false,
   },
   {
     label: 'Dashboard',
     path: '/dashboard',
     component: Dashboard,
-    auth: true,
+    isLoggedIn: true,
   },
   {
     label: 'Settings',
     path: '/settings',
     component: Settings,
-    auth: true,
+    isLoggedIn: true,
   },
   {
     label: 'Logout',
     path: '/logout',
     component: Logout,
+    isLoggedIn: true,
   },
 ];
 
