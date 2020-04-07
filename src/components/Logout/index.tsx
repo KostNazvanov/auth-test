@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from 'antd';
-import actions from "../../actions";
+
+import actions from '../../actions';
 
 const Logout = () => {
   return (

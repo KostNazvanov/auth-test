@@ -1,14 +1,15 @@
+import { ConnectedComponent } from 'react-redux';
+
 import Login from '../components/Login';
 import Dashboard from '../components/Dashboard';
 import Settings from '../components/Settings';
 import Logout from '../components/Logout';
-import { ConnectedComponent } from 'react-redux';
 
 export interface IRoute {
-  label: string,
-  path: string,
-  component: (() => JSX.Element) | (typeof Login) | ConnectedComponent<any, any>, // TODO fix static type
-  isLoggedIn: boolean,
+  label: string;
+  path: string;
+  component: (() => JSX.Element) | (typeof Login) | ConnectedComponent<any, any>; // TODO fix static type
+  isLoggedIn: boolean;
 }
 
 const routes: IRoute[] = [

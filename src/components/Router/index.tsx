@@ -3,10 +3,10 @@ import {
   Switch,
   Route, Redirect,
 } from 'react-router-dom';
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
 import routes, { IRoute } from '../../configs/routes';
-import { IState } from "../../reducers";
+import { IState } from '../../reducers';
 
 interface IRouterProps {
   isLoggedIn: boolean;

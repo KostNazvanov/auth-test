@@ -1,13 +1,13 @@
 import React from 'react';
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 import { Empty, Collapse, Card } from 'antd';
 
-import actions from "../../actions";
-import { IState, IDashboard } from "../../reducers";
+import actions from '../../actions';
+import { IState, IDashboard } from '../../reducers';
 
 interface IDashboardProps {
-  dashboard: IDashboard | false,
-  loading: boolean,
+  dashboard: IDashboard | false;
+  loading: boolean;
 }
 
 export class Dashboard extends React.Component<IDashboardProps> {

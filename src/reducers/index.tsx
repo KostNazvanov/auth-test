@@ -2,7 +2,7 @@ import { User } from 'firebase';
 
 export interface IAction {
   type: string;
-  [key: string]: any; // Payload could be any type
+  [key: string]: any; // Payload could be any type or size
 }
 
 export interface IDashboard {

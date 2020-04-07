@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 import {
   Empty,
   Card,
@@ -8,8 +8,8 @@ import {
   Checkbox,
 } from 'antd';
 
-import actions from "../../actions";
-import { IState, ISettings, ISettingItem } from "../../reducers";
+import actions from '../../actions';
+import { IState, ISettings, ISettingItem } from '../../reducers';
 
 interface IDashboardProps {
   settings: ISettings | false;

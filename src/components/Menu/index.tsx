@@ -13,7 +13,6 @@ function Menu(props: IMenuProps) {
   return (
     <AntdMenu
       style={{ width: 256 }}
-      defaultSelectedKeys={['1']}
       mode="inline"
       selectedKeys={[props.location.pathname]}
     >
