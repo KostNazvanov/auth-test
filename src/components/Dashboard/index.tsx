@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { User } from 'firebase';
 import { Empty, Collapse, Card } from 'antd';
 
 import actions from '../../actions';
@@ -7,6 +8,7 @@ import { IState, IDashboard } from '../../reducers';
 
 interface IDashboardProps {
   dashboard: IDashboard | false;
+  user: User | null;
   loading: boolean;
 }
 
@@ -44,10 +46,10 @@ export class Dashboard extends React.Component<IDashboardProps> {
   }
 
   render = () => {
-    const { dashboard } = this.props;
+    const { dashboard, user } = this.props;
 
     return (
-      <Card>
+      <Card title={user && `Welcome, ${user.email}`}>
         {dashboard
           ? (
             this.content
@@ -60,8 +62,8 @@ export class Dashboard extends React.Component<IDashboardProps> {
 }
 
 const mapStateToProps = (state: IState) => {
-  const { dashboard, loading } = state;
-  return { dashboard, loading };
+  const { dashboard, loading, user } = state;
+  return { dashboard, loading, user };
 };
 
 export default connect(mapStateToProps)(Dashboard);
