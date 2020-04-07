@@ -8,8 +8,8 @@ import Logout from '../components/Logout';
 export interface IRoute {
   label: string;
   path: string;
-  component: (() => JSX.Element) | (typeof Login) | ConnectedComponent<any, any>; // TODO fix static type
-  isLoggedIn: boolean;
+  component: (() => JSX.Element) | ConnectedComponent<any, any>;
+  isLoggedIn?: boolean;
 }
 
 const routes: IRoute[] = [

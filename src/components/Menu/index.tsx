@@ -16,7 +16,7 @@ function Menu(props: IMenuProps) {
       mode="inline"
       selectedKeys={[props.location.pathname]}
     >
-      {routes.map((value: IRoute) => value.isLoggedIn === props.isLoggedIn && (
+      {routes.map((value: IRoute) => (value.isLoggedIn === props.isLoggedIn) && (
         <AntdMenu.Item
           key={value.path}
           disabled={value.path === props.location.pathname}

@@ -1,41 +1,55 @@
 import React from 'react';
-import { Form, Input, Button } from 'antd';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import {
+  Form,
+  Input,
+  Button,
+} from 'antd';
 
 import actions from '../../actions';
+import { IState } from '../../reducers';
 
-interface ILoginState {
-  email: string;
-  password: string;
+interface ILoginProps {
+  isLoggedIn: boolean;
 }
 
-class Login extends React.Component<{}, ILoginState> {
-  render = () => {
-    return (
-      <Form
-        onFinish={(values) => actions.login(values)}
-      >
-        <Form.Item
-          label="Email"
-          name="email"
-          rules={[{ required: true, message: 'Please input your email!' }]}
-        >
-          <Input/>
-        </Form.Item>
-        <Form.Item
-          label="Password"
-          name="password"
-          rules={[{ required: true, message: 'Please input your password!' }]}
-        >
-          <Input.Password/>
-        </Form.Item>
-        <Form.Item>
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
-        </Form.Item>
-      </Form>
-    );
+
+const Login = (props: ILoginProps) => {
+  if (props.isLoggedIn) {
+    return <Redirect to="/dashboard"/>
   }
-}
 
-export default Login;
+  return (
+    <Form
+      onFinish={(values) => actions.login(values)}
+    >
+      <Form.Item
+        label="Email"
+        name="email"
+        rules={[{ required: true, message: 'Please input your email!' }]}
+      >
+        <Input/>
+      </Form.Item>
+      <Form.Item
+        label="Password"
+        name="password"
+        rules={[{ required: true, message: 'Please input your password!' }]}
+      >
+        <Input.Password/>
+      </Form.Item>
+      <Form.Item>
+        <Button type="primary" htmlType="submit">
+          Login
+        </Button>
+      </Form.Item>
+    </Form>
+  );
+};
+
+const mapStateToProps = (state: IState) => {
+  const { isLoggedIn } = state;
+  return { isLoggedIn };
+};
+
+export default connect(mapStateToProps)(Login);
