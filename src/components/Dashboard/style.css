@@ -1,0 +1,12 @@
+div.ant-card {
+    max-width: 654px;
+    width: 100%;
+}
+
+.ant-card .ant-collapse-header {
+    min-height: 46px;
+}
+
+.ant-card img {
+    width: 100%;
+}

@@ -1,5 +1,19 @@
+#root {
+    display: flex;
+    min-height: 100vh;
+    min-width: 100vw;
+}
+
 .app {
-  display: flex;
-  min-height: 100vh;
-  min-width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+}
+
+.ant-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }

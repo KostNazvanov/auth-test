@@ -6,9 +6,11 @@ const firebase = _firebase.initializeApp(firebaseConfig);
 // TODO remove after testing
 // @ts-ignore
 window.firebase = firebase;
-export default firebase;
 
-firebase.auth().onAuthStateChanged((user) => {
+const auth = firebase.auth();
+const database = firebase.database();
+
+auth.onAuthStateChanged((user) => {
   if (user) {
     actions.loginSuccess({ user });
   } else {
@@ -17,13 +19,22 @@ firebase.auth().onAuthStateChanged((user) => {
 });
 
 export const signUp = (email: string, password: string) => {
-  return firebase.auth().createUserWithEmailAndPassword(email, password)
+  return auth.createUserWithEmailAndPassword(email, password)
 };
 
 export const signIn = (email: string, password: string) => {
-  return firebase.auth().signInWithEmailAndPassword(email, password)
+  return auth.signInWithEmailAndPassword(email, password)
 };
 
 export const signOut = () => {
-  return firebase.auth().signOut();
+  return auth.signOut();
 };
+
+export const getDashboard = () => {
+  return database.ref('dashboard').once('value', );
+};
+export const getSettings = () => {
+  return database.ref('settings').once('value', );
+};
+
+export default firebase;

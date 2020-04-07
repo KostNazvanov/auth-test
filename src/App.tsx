@@ -8,12 +8,12 @@ import 'antd/dist/antd.css';
 
 function App() {
   return (
-    <div className="app">
-      <BrowserRouter>
-        <Menu/>
+    <BrowserRouter>
+      <Menu/>
+      <div className="app">
         <Router/>
-      </BrowserRouter>
-    </div>
+      </div>
+    </BrowserRouter>
   );
 }
 
