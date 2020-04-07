@@ -28,7 +28,7 @@ function Router(props: IRouterProps) {
       }
       <Route path='/'>
         <Card>
-          <Empty/>
+          <Empty description="404 page not found. Missed the link or not logged in?"/>
           <br/>
           <Card.Meta description={
             <Link to='/login'>
