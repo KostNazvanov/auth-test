@@ -18,7 +18,7 @@ function Router(props: IRouterProps) {
   return (
     <Switch>
       {routes.map((value: IRoute) =>
-        (!value.isLoggedIn || (value.isLoggedIn && props.isLoggedIn)) && (
+        (!value.isLoggedIn || props.isLoggedIn) && (
           <Route
             key={value.path}
             path={value.path}
