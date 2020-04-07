@@ -8,7 +8,7 @@ import Logout from '../components/Logout';
 export interface IRoute {
   label: string;
   path: string;
-  component: (() => JSX.Element) | ConnectedComponent<any, any>;
+  component: ConnectedComponent<any, any>;
   isLoggedIn?: boolean;
 }
 

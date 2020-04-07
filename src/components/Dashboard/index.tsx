@@ -34,6 +34,7 @@ export class Dashboard extends React.Component<IDashboardProps> {
             >
               {image && <img src={image} alt=""/>}
               <br/>
+              <br/>
               {body}
             </Collapse.Panel>
           );

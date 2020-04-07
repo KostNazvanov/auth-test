@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import { Button, Empty, Card } from 'antd';
 
 import routes, { IRoute } from '../../configs/routes';
-import { IState } from '../../reducers';
+import { mapLoggedToProps } from '../../helpers/utils';
 
 interface IRouterProps {
   isLoggedIn: boolean;
@@ -46,9 +46,4 @@ function Router(props: IRouterProps) {
   );
 }
 
-const mapStateToProps = (state: IState) => {
-  const { isLoggedIn } = state;
-  return { isLoggedIn };
-};
-
-export default connect(mapStateToProps)(Router);
+export default connect(mapLoggedToProps)(Router);

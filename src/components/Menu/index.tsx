@@ -2,8 +2,9 @@ import React from 'react';
 import { Menu as AntdMenu } from 'antd';
 import { Link, withRouter, RouteComponentProps } from 'react-router-dom';
 import { connect } from 'react-redux';
+
 import routes, { IRoute } from '../../configs/routes';
-import { IState } from '../../reducers';
+import { mapLoggedToProps } from '../../helpers/utils';
 
 interface IMenuProps extends RouteComponentProps {
   isLoggedIn: boolean;
@@ -30,9 +31,4 @@ function Menu(props: IMenuProps) {
   );
 }
 
-const mapStateToProps = (state: IState) => {
-  const { isLoggedIn } = state;
-  return { isLoggedIn };
-};
-
-export default connect(mapStateToProps)(withRouter(Menu));
+export default connect(mapLoggedToProps)(withRouter(Menu));

@@ -8,12 +8,11 @@ import {
 } from 'antd';
 
 import actions from '../../actions';
-import { IState } from '../../reducers';
+import { mapLoggedToProps } from '../../helpers/utils';
 
 interface ILoginProps {
   isLoggedIn: boolean;
 }
-
 
 const Login = (props: ILoginProps) => {
   if (props.isLoggedIn) {
@@ -47,9 +46,4 @@ const Login = (props: ILoginProps) => {
   );
 };
 
-const mapStateToProps = (state: IState) => {
-  const { isLoggedIn } = state;
-  return { isLoggedIn };
-};
-
-export default connect(mapStateToProps)(Login);
+export default connect(mapLoggedToProps)(Login);

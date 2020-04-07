@@ -4,7 +4,7 @@ import { Redirect } from 'react-router';
 import { Button, Avatar } from 'antd';
 
 import actions from '../../actions';
-import { IState } from '../../reducers';
+import { mapLoggedToProps } from '../../helpers/utils';
 
 interface ILogoutProps {
   isLoggedIn: boolean;
@@ -24,6 +24,7 @@ const Logout = (props: ILogoutProps) => {
         size={256}
       />
       <br/>
+      <br/>
       <Button
         type="danger"
         size="large"
@@ -36,8 +37,4 @@ const Logout = (props: ILogoutProps) => {
   )
 };
 
-const mapStateToProps = (state: IState) => {
-  const { isLoggedIn } = state;
-  return { isLoggedIn };
-};
-export default connect(mapStateToProps)(Logout);
+export default connect(mapLoggedToProps)(Logout);
