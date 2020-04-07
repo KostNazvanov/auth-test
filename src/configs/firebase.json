@@ -1,0 +1,9 @@
+{
+  "apiKey": "AIzaSyBKCvulILU2SoELxg0xWE_b7DkCCOYvqQA",
+  "authDomain": "auth-test-ec1cc.firebaseapp.com",
+  "databaseURL": "https://auth-test-ec1cc.firebaseio.com",
+  "projectId": "auth-test-ec1cc",
+  "storageBucket": "auth-test-ec1cc.appspot.com",
+  "messagingSenderId": "747107781495",
+  "appId": "1:747107781495:web:3d27c61874c39d4e6b2f72"
+}
